@@ -2,6 +2,8 @@
 
 SQL analysis of hospital discharge encounters to find where 30-day readmissions concentrate, with outputs ready for Power BI.
 
+📝 Write-up on Medium: [Where Do Hospital Readmissions Concentrate?](https://medium.com/@bhargavpeddi/where-do-hospital-readmissions-concentrate-a-sql-first-analysis-623689532ce0)
+
 ![Readmission rates](docs/readmission_rates.png)
 
 ## Results
@@ -16,7 +18,11 @@ Seed 42, 10,000 encounters.
 | Low-risk segment | 8.6% |
 | Highest department | General Medicine, 16.5% |
 
-High-risk encounters readmit at more than three times the low-risk rate, so that group is where follow-up calls should start.
+High-risk encounters readmit at more than three times the low-risk rate, so that group is where follow-up calls should start. It is 18% of encounters but 35% of readmissions (517 of 1,486). Departments differ much less: all five are within two points of the overall rate.
+
+| By department | By risk segment |
+| --- | --- |
+| ![Readmission rate by department](docs/department_rates.png) | ![Encounters by risk segment](docs/segment_volume.png) |
 
 ## Data
 
@@ -36,7 +42,7 @@ Python 3.9+. The analysis uses only the standard library; charts need matplotlib
 ```bash
 python3 generate_data.py --rows 10000
 python3 analyze.py         # writes outputs/*.csv and outputs/dashboard.html
-python3 make_charts.py     # writes docs/readmission_rates.png
+python3 make_charts.py     # writes the charts in docs/
 python3 -m unittest -v
 ```
 

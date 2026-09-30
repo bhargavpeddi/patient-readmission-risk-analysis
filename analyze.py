@@ -101,9 +101,9 @@ h1{{font-size:clamp(2rem,6vw,3.5rem);line-height:1.05}}.note{{color:#99aec9}}.ca
 .card{{background:#17253b;border:1px solid #324762;border-radius:16px;padding:22px}}.card strong{{display:block;font-size:2rem;color:#62dfdf}}
 .bar-row{{display:grid;grid-template-columns:155px 1fr 65px;gap:15px;align-items:center;margin:16px 0}}.track{{background:#27364e;border-radius:30px;height:18px;overflow:hidden}}.fill{{height:100%;background:linear-gradient(90deg,#34d8c9,#719aff)}}
 @media(max-width:550px){{.bar-row{{grid-template-columns:1fr 1fr;gap:6px}}.track{{grid-column:1/-1;grid-row:2}}}}
-</style><main><p class="note">SYNTHETIC DATA · REPRODUCIBLE SQL ANALYSIS</p><h1>Patient readmission patterns</h1><p>Demonstration only. Not a clinical model or decision aid.</p>
+</style><main><p class="note">SQL ANALYSIS · GENERATED DE-IDENTIFIED DATA</p><h1>Patient readmission patterns</h1><p>30-day readmissions by risk segment and department. Descriptive analysis, not a clinical risk score.</p>
 <div class="cards"><div class="card">Encounters<strong>{total:,}</strong></div><div class="card">30-day readmissions<strong>{readmissions:,}</strong></div><div class="card">Observed rate<strong>{100 * readmissions / total:.1f}%</strong></div></div>
-<h2>Rate by department</h2>{bars}<p class="note">Generated records have no patient identifiers. Department differences are artifacts of the synthetic generator, not medical findings.</p></main></html>"""
+<h2>Rate by department</h2>{bars}<p class="note">Records are generated and contain no patient identifiers, so department differences reflect the generator rather than clinical findings.</p></main></html>"""
     (output_dir / "dashboard.html").write_text(report, encoding="utf-8")
     connection.close()
     return {"encounters": total, "readmissions": readmissions, "readmission_rate_pct": round(100 * readmissions / total, 2)}
